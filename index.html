@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-TRA MILE CARGO LOGISTICS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        html { scroll-behavior: smooth; }
+        #map { height: 400px; width: 100%; border-radius: 0.5rem; z-index: 10; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-wider">
+                    X-TRA MILE CARGO LOGISTICS
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium" onclick="showTab('public')">Home</a>
+                        <a href="#about" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium" onclick="showTab('public')">About</a>
+                        <a href="#services" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium" onclick="showTab('public')">Services</a>
+                        <a href="#branches" class="hover:bg-blue-700 px-3 py-2 rounded-md font-medium" onclick="showTab('public')">Branches & Map</a>
+                        <button onclick="showTab('system')" class="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-3 py-2 rounded-md font-bold transition">Internal System</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="public-view" class="tab-content active">
+        
+        <header id="home" class="bg-blue-800 text-white py-20 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Making Things Possible...</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto text-blue-200">
+                Delivering the best services and rates to satisfy your logistics and cargo requirements.
+            </p>
+        </header>
+
+        <section id="about" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Company Profile</h2>
+                <p class="text-lg text-gray-600 mb-10 text-center max-w-4xl mx-auto">
+                    Due to big opportunities in the Logistics business and with the increasing number of exporters, importers, and local clients, we built a new type of forwarding company with the main objective to give satisfaction to our clients and to our principals. We serve to exceed client's expectations.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-blue-50 p-8 rounded-lg shadow border-l-4 border-blue-900">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-4">Our Mission</h3>
+                        <p class="text-gray-700">TO EXCEED CLIENT'S EXPECTATIONS AND TO DELIVER THE MOST EFFICIENT AND EFFECTIVE CARGO TRANSPORT (AIR / LAND / SEA) SERVICES AMONG BUSINESS COMMUNITIES.</p>
+                    </div>
+                    <div class="bg-blue-50 p-8 rounded-lg shadow border-l-4 border-yellow-500">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-4">Our Vision</h3>
+                        <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                            <li>TO BE ONE OF THE MOST EFFECTIVE SERVICE AND FORMIDABLE THIRD PARTY LOGISTICS PROVIDER IN THE COUNTRY, WITH GLOBAL STANDARD OPERATIONS FOR OUR NEXT GENERATIONS TO COME.</li>
+                            <li>CREATING WORLDWIDE LEADERS TO GIVE THE BEST AND MOST EFFECTIVE THIRD PARTY LOGISTICS FOR THE NEXT MILLENNIUM.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-16 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-blue-900 mb-12 text-center">Services Rendered</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-bold text-blue-800 mb-2">International (Export & Import)</h4>
+                        <p class="text-gray-600">Handling all types of cargoes (LCL, 20' & 40', HQ) from the Philippines to and from destinations abroad.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-bold text-blue-800 mb-2">Local (Domestic Cargoes)</h4>
+                        <p class="text-gray-600">Handling all types of cargoes (LCL, 10', 20' & 40') from Manila to various south bounds (vice-versa) with competitive rates.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-bold text-blue-800 mb-2">Specialized Services</h4>
+                        <p class="text-gray-600">Custom processing & Brokerage, heavy lifting, tracking, tramping, chartering, and other cargo vessel requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="branches" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Our Branches</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="space-y-6">
+                            <div class="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                <h4 class="font-bold text-lg text-blue-900">Main Branch (Cagayan de Oro)</h4>
+                                <p class="text-sm text-gray-600">2nd Floor De Leon Bldg., Yacapin-Velez St., Cagayan de Oro City<br>Tel: 088-855-5295</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                <h4 class="font-bold text-lg text-blue-900">Luzon Branch</h4>
+                                <p class="text-sm text-gray-600">516-B A. H. Lacson st., Brgy. 434, Sampaloc, Metro Manila<br>Tel: (02) 354-1560</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                <h4 class="font-bold text-lg text-blue-900">Cebu Branch</h4>
+                                <p class="text-sm text-gray-600">A&M Barz Bldg. Ibabo, Mandaue City, Cebu<br>Tel: (032)-236-5893</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                <h4 class="font-bold text-lg text-blue-900">Davao Branch</h4>
+                                <p class="text-sm text-gray-600">Tiya Peping st., Guadalupe Village, Lanang, Davao City</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-200 rounded-lg shadow-inner flex items-center justify-center p-2">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="system-view" class="tab-content bg-gray-100 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-blue-900">Internal Operations System</h2>
+                <button onclick="showTab('public')" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Back to Website</button>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow p-6 border-t-4 border-blue-900">
+                    <h3 class="font-bold text-xl mb-4 text-blue-900 border-b pb-2">Branch Manager (BM)</h3>
+                    <ul class="text-sm text-gray-700 space-y-3 list-disc pl-4">
+                        <li>Responsible for monitoring Operation, Sales & Financial matters.</li>
+                        <li>Can directly check with operation staff on updates.</li>
+                        <li>Responsible for daily reporting to the General Manager.</li>
+                        <li>Responsible for branch administration, accounting, operations, and sales.</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6 border-t-4 border-yellow-500">
+                    <h3 class="font-bold text-xl mb-4 text-blue-900 border-b pb-2">Marketing Coordinator (MC)</h3>
+                    <ul class="text-sm text-gray-700 space-y-3 list-disc pl-4">
+                        <li>Monitor all shipments from booking to return of empty containers.</li>
+                        <li>Update operations, clients & other parties to the last details of cargo status.</li>
+                        <li>Require Operation Staff to give reports and updates (Strict Compliance).</li>
+                        <li>Issue HOUSE WAY BILL for every single transaction.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6 border-t-4 border-green-600">
+                    <h3 class="font-bold text-xl mb-4 text-blue-900 border-b pb-2">Operation Staff (Terminal)</h3>
+                    <ul class="text-sm text-gray-700 space-y-3 list-disc pl-4">
+                        <li>Execute required reports, updates, and status of shipments.</li>
+                        <li>Container status report should be forwarded to the Marketing Coordinator.</li>
+                        <li>Report to the MC/CSR status on trucking, vessel, pertaining documents.</li>
+                        <li>Liaison officer is responsible for updating reports from Banks, Billings, etc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="font-bold text-xl mb-4 text-blue-900 border-b pb-2">Submission of Reports Schedule</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-left text-sm">
+                        <thead class="bg-gray-100 text-gray-700">
+                            <tr>
+                                <th class="px-4 py-3">Report Type</th>
+                                <th class="px-4 py-3">Deadline / Frequency</th>
+                                <th class="px-4 py-3">Method</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-600">
+                            <tr class="border-b">
+                                <td class="px-4 py-3 font-medium">Account Receivables/Collection</td>
+                                <td class="px-4 py-3">Daily before 9am</td>
+                                <td class="px-4 py-3">Fax or Email</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="px-4 py-3 font-medium">Weekly Revenue Reports</td>
+                                <td class="px-4 py-3">Day after weekly schedule (1-7, 8-14, 15-21, 22-end)</td>
+                                <td class="px-4 py-3">Standard Channel</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Income Statement</td>
+                                <td class="px-4 py-3">13th day of the following month</td>
+                                <td class="px-4 py-3">Standard Channel</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-blue-900 text-white text-center py-6 mt-8">
+        <p>&copy; 2026 X-TRA MILE CARGO LOGISTICS. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Tab switching logic
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            if(tabId === 'system') {
+                document.getElementById('system-view').classList.add('active');
+                window.scrollTo(0,0);
+            } else {
+                document.getElementById('public-view').classList.add('active');
+                // Fix map rendering issue when hidden
+                setTimeout(() => { map.invalidateSize(); }, 100);
+            }
+        }
+
+        // Initialize Map
+        const map = L.map('map').setView([11.874, 122.861], 5); // Centered on Philippines
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Branch Locations based on documents
+        const branches = [
+            { name: "Main Branch (CDO)", coords: [8.4772, 124.6459], desc: "2nd Floor De Leon Bldg., Yacapin-Velez St." },
+            { name: "Luzon Branch (Manila)", coords: [14.6065, 120.9939], desc: "516-B A. H. Lacson st., Sampaloc" },
+            { name: "Cebu Branch", coords: [10.3333, 123.9333], desc: "A&M Barz Bldg. Ibabo, Mandaue City" },
+            { name: "Davao Branch", coords: [7.1033, 125.6483], desc: "Tiya Peping st., Lanang" }
+        ];
+
+        // Add markers to map
+        branches.forEach(branch => {
+            L.marker(branch.coords).addTo(map)
+                .bindPopup(`<b>${branch.name}</b><br>${branch.desc}`);
+        });
+    </script>
+</body>
+</html>
